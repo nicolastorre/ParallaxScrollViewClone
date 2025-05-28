@@ -44,24 +44,25 @@ exports[`ParallaxScrollView matches snapshot 1`] = `
         "height": 170,
         "justifyContent": "center",
         "left": 0,
-        "paddingTop": 44,
         "position": "absolute",
         "right": 0,
         "top": 0,
       }
     }
   >
-    <Text
-      style={
-        {
-          "color": "white",
-          "fontSize": 16,
-          "textAlign": "center",
+    <RCTSafeAreaView>
+      <Text
+        style={
+          {
+            "color": "white",
+            "fontSize": 16,
+            "textAlign": "center",
+          }
         }
-      }
-    >
-      Snapshot Title
-    </Text>
+      >
+        Snapshot Title
+      </Text>
+    </RCTSafeAreaView>
   </View>
 </View>
 `;
