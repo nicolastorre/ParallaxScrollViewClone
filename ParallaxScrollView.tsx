@@ -1,28 +1,20 @@
 import React, {useRef} from 'react';
-import {
-  Animated,
-  Platform,
-  StatusBar,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import {Animated, SafeAreaView, StyleSheet, Text, View} from 'react-native';
 
 type ParallaxScrollViewProps = {
   title?: string | React.ReactNode;
   renderContent: () => React.ReactNode;
   headerMaxHeight?: number;
   headerMinHeight?: number;
+  scrollEventThrottle?: number;
 };
-
-const STATUS_BAR_HEIGHT =
-  Platform.OS === 'ios' ? 44 : StatusBar.currentHeight ?? 0;
 
 export const ParallaxScrollView: React.FC<ParallaxScrollViewProps> = ({
   title,
   renderContent,
   headerMaxHeight = 170,
   headerMinHeight = 64,
+  scrollEventThrottle = 16,
 }) => {
   const scrollY = useRef(new Animated.Value(0)).current;
 
@@ -33,8 +25,6 @@ export const ParallaxScrollView: React.FC<ParallaxScrollViewProps> = ({
     outputRange: [headerMaxHeight, headerMinHeight],
     extrapolate: 'clamp',
   });
-
-  const scrollEventThrottle = 16;
 
   return (
     <View style={styles.container}>
@@ -57,11 +47,13 @@ export const ParallaxScrollView: React.FC<ParallaxScrollViewProps> = ({
             height: headerHeight,
           },
         ]}>
-        {typeof title === 'string' ? (
-          <Text style={styles.headerText}>{title}</Text>
-        ) : (
-          title
-        )}
+        <SafeAreaView>
+          {typeof title === 'string' ? (
+            <Text style={styles.headerText}>{title}</Text>
+          ) : (
+            title
+          )}
+        </SafeAreaView>
       </Animated.View>
     </View>
   );
@@ -82,7 +74,6 @@ const styles = StyleSheet.create({
     right: 0,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingTop: STATUS_BAR_HEIGHT,
   },
   headerText: {
     color: 'white',
