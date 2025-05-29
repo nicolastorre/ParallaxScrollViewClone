@@ -8,30 +8,6 @@ exports[`ParallaxScrollView matches snapshot 1`] = `
     }
   }
 >
-  <RCTScrollView
-    collapsable={false}
-    contentContainerStyle={
-      {
-        "paddingTop": 170,
-      }
-    }
-    onScroll={[Function]}
-    scrollEventThrottle={16}
-    style={
-      {
-        "flex": 1,
-      }
-    }
-  >
-    <View>
-      <Text>
-        Item 1
-      </Text>
-      <Text>
-        Item 2
-      </Text>
-    </View>
-  </RCTScrollView>
   <View
     accessibilityLabel="Parallax Header Container"
     accessible={true}
@@ -96,5 +72,29 @@ exports[`ParallaxScrollView matches snapshot 1`] = `
       </View>
     </RCTSafeAreaView>
   </View>
+  <RCTScrollView
+    collapsable={false}
+    contentContainerStyle={
+      {
+        "paddingTop": 170,
+      }
+    }
+    onScroll={[Function]}
+    scrollEventThrottle={16}
+    style={
+      {
+        "flex": 1,
+      }
+    }
+  >
+    <View>
+      <Text>
+        Item 1
+      </Text>
+      <Text>
+        Item 2
+      </Text>
+    </View>
+  </RCTScrollView>
 </View>
 `;

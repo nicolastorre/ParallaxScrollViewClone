@@ -1,6 +1,6 @@
 import React from 'react';
 import {render} from '@testing-library/react-native';
-import {ParallaxScrollView} from '../ParallaxScrollView';
+import {ParallaxScrollView} from '../src/components/parallaxScrollView/ParallaxScrollView';
 import {Text} from 'react-native';
 
 describe('ParallaxScrollView', () => {

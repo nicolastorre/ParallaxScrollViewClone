@@ -5,7 +5,7 @@
 
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {ParallaxScrollView} from './ParallaxScrollView';
+import {ParallaxScrollView} from './components/parallaxScrollView/ParallaxScrollView';
 
 function App(): React.JSX.Element {
   const renderContent = () => {

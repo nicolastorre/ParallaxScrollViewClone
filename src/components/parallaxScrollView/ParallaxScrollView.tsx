@@ -1,6 +1,6 @@
 import React, {useRef} from 'react';
 import {Animated, StyleSheet, View} from 'react-native';
-import {AnimatedHeader} from './AnimatedHeader';
+import {AnimatedHeader} from '../animatedHeader/AnimatedHeader';
 
 type ParallaxScrollViewProps = {
   mainHeader?: string | React.ReactElement;
