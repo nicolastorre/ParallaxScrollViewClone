@@ -2,23 +2,25 @@ import {StatusBar, StyleSheet, Text, View} from 'react-native';
 import {ParallaxScrollView} from '../../components/parallaxScrollView/ParallaxScrollView';
 import {common} from '../../styles/common';
 import {colors} from '../../styles/colors';
-
-const renderScrollContent = (): React.ReactNode => {
-  return (
-    <View style={styles.content}>
-      {Array.from({length: 50}).map((_, index) => (
-        <View key={index} style={styles.item}>
-          <Text style={styles.itemText}>Élément #{index + 1}</Text>
-        </View>
-      ))}
-    </View>
-  );
-};
+import {HomeHeader} from '../../components/homeHeader/HomeHeader';
 
 export const HomeScreen: React.FC = () => {
+  const renderScrollContent = (): React.ReactNode => {
+    return (
+      <View style={styles.content}>
+        {Array.from({length: 50}).map((_, index) => (
+          <View key={index} style={styles.item}>
+            <Text style={styles.itemText}>Élément #{index + 1}</Text>
+          </View>
+        ))}
+      </View>
+    );
+  };
+
   return (
     <View style={[common.container, styles.homeContainer]}>
       <StatusBar backgroundColor={colors.black} />
+      <HomeHeader />
       <ParallaxScrollView
         mainHeader={
           <Text
