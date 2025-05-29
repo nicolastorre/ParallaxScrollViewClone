@@ -1,11 +1,12 @@
 import React, {useRef} from 'react';
 import {Animated, StyleSheet, View} from 'react-native';
 import {AnimatedHeader} from '../animatedHeader/AnimatedHeader';
+import {common} from '../../styles/common';
 
 type ParallaxScrollViewProps = {
-  mainHeader?: string | React.ReactElement;
-  navHeader?: string | React.ReactElement;
-  renderContent: () => React.ReactElement;
+  mainHeader: React.ReactNode;
+  navHeader: React.ReactNode;
+  renderContent: () => React.ReactNode;
   headerMaxHeight?: number;
   headerMinHeight?: number;
   scrollEventThrottle?: number;
@@ -22,7 +23,7 @@ export const ParallaxScrollView: React.FC<ParallaxScrollViewProps> = ({
   const scrollY = useRef(new Animated.Value(0)).current;
 
   return (
-    <View style={styles.container}>
+    <View style={common.container}>
       <AnimatedHeader
         scrollY={scrollY}
         headerMaxHeight={headerMaxHeight}
@@ -48,9 +49,6 @@ export const ParallaxScrollView: React.FC<ParallaxScrollViewProps> = ({
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   scrollView: {
     flex: 1,
   },

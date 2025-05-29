@@ -2,7 +2,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import {ParallaxScrollView} from '../../components/parallaxScrollView/ParallaxScrollView';
 import {common} from '../../styles/common';
 
-const ScrollContent = (): React.JSX.Element => {
+const renderScrollContent = (): React.ReactNode => {
   return (
     <View style={styles.content}>
       {Array.from({length: 50}).map((_, index) => (
@@ -36,7 +36,7 @@ export const HomeScreen: React.FC = () => {
             {'Nav header'}
           </Text>
         }
-        renderContent={ScrollContent}
+        renderContent={renderScrollContent}
       />
     </View>
   );
