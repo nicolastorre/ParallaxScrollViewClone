@@ -8,6 +8,7 @@ type AnimatedHeaderProps = {
   mainHeader: React.ReactNode;
   navHeader: React.ReactNode;
   fadeDistance?: number;
+  headerBackgroundColor?: string;
 };
 
 export const AnimatedHeader: React.FC<AnimatedHeaderProps> = ({
@@ -17,6 +18,7 @@ export const AnimatedHeader: React.FC<AnimatedHeaderProps> = ({
   mainHeader,
   navHeader,
   fadeDistance = 40,
+  headerBackgroundColor = 'black',
 }) => {
   const scrollRange = useMemo(
     () => headerMaxHeight - headerMinHeight,
@@ -57,7 +59,10 @@ export const AnimatedHeader: React.FC<AnimatedHeaderProps> = ({
 
   return (
     <Animated.View
-      style={[styles.header, {height: headerHeight}]}
+      style={[
+        styles.header,
+        {height: headerHeight, backgroundColor: headerBackgroundColor},
+      ]}
       accessible
       accessibilityLabel="Parallax Header Container"
       testID="parallax-header">
@@ -93,7 +98,6 @@ export const AnimatedHeader: React.FC<AnimatedHeaderProps> = ({
 
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: 'black',
     position: 'absolute',
     top: 0,
     left: 0,

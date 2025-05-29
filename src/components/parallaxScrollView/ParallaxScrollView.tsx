@@ -10,6 +10,7 @@ type ParallaxScrollViewProps = {
   headerMaxHeight?: number;
   headerMinHeight?: number;
   scrollEventThrottle?: number;
+  headerBackgroundColor?: string;
 };
 
 export const ParallaxScrollView: React.FC<ParallaxScrollViewProps> = ({
@@ -19,6 +20,7 @@ export const ParallaxScrollView: React.FC<ParallaxScrollViewProps> = ({
   headerMaxHeight = 170,
   headerMinHeight = 64,
   scrollEventThrottle = 16,
+  headerBackgroundColor = 'black',
 }) => {
   const scrollY = useRef(new Animated.Value(0)).current;
 
@@ -30,6 +32,7 @@ export const ParallaxScrollView: React.FC<ParallaxScrollViewProps> = ({
         headerMinHeight={headerMinHeight}
         mainHeader={mainHeader}
         navHeader={navHeader}
+        headerBackgroundColor={headerBackgroundColor}
       />
 
       <Animated.ScrollView

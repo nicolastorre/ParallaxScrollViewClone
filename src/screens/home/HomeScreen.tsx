@@ -1,6 +1,7 @@
 import {StyleSheet, Text, View} from 'react-native';
 import {ParallaxScrollView} from '../../components/parallaxScrollView/ParallaxScrollView';
 import {common} from '../../styles/common';
+import {colors} from '../../styles/colors';
 
 const renderScrollContent = (): React.ReactNode => {
   return (
@@ -37,6 +38,7 @@ export const HomeScreen: React.FC = () => {
           </Text>
         }
         renderContent={renderScrollContent}
+        headerBackgroundColor={colors.black}
       />
     </View>
   );
@@ -44,13 +46,13 @@ export const HomeScreen: React.FC = () => {
 
 const styles = StyleSheet.create({
   homeContainer: {
-    backgroundColor: 'black',
+    backgroundColor: colors.black,
   },
   content: {
     padding: 20,
   },
   item: {
-    backgroundColor: '#f0f0f0',
+    backgroundColor: colors.white,
     marginBottom: 10,
     padding: 15,
     borderRadius: 8,
@@ -59,7 +61,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   headerText: {
-    color: 'white',
+    color: colors.white,
     textAlign: 'center',
     fontSize: 16,
   },
