@@ -3,14 +3,16 @@ import {render} from '@testing-library/react-native';
 import {ParallaxScrollView} from '../ParallaxScrollView';
 import {Text} from 'react-native';
 
+const mainHeader = 'Test main header';
+const navHeader = 'Test nav header';
+const contentText = 'Test Content Item';
+
 describe('ParallaxScrollView', () => {
   it('renders the title and content correctly', () => {
-    const title = 'Test Title';
-    const contentText = 'Test Content Item';
-
     const {getByText} = render(
       <ParallaxScrollView
-        title={title}
+        mainHeader={mainHeader}
+        navHeader={navHeader}
         renderContent={() => (
           <>
             <Text>{contentText}</Text>
@@ -19,7 +21,7 @@ describe('ParallaxScrollView', () => {
       />,
     );
 
-    expect(getByText(title)).toBeTruthy();
+    expect(getByText(mainHeader)).toBeTruthy();
 
     expect(getByText(contentText)).toBeTruthy();
   });
@@ -27,7 +29,8 @@ describe('ParallaxScrollView', () => {
   it('matches snapshot', () => {
     const tree = render(
       <ParallaxScrollView
-        title="Snapshot Title"
+        mainHeader={mainHeader}
+        navHeader={navHeader}
         renderContent={() => (
           <>
             <Text>Item 1</Text>

@@ -1,16 +1,19 @@
 import React, {useRef} from 'react';
-import {Animated, SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import {Animated, StyleSheet, View} from 'react-native';
+import {AnimatedHeader} from './AnimatedHeader';
 
 type ParallaxScrollViewProps = {
-  title?: string | React.ReactNode;
-  renderContent: () => React.ReactNode;
+  mainHeader?: string | React.ReactElement;
+  navHeader?: string | React.ReactElement;
+  renderContent: () => React.ReactElement;
   headerMaxHeight?: number;
   headerMinHeight?: number;
   scrollEventThrottle?: number;
 };
 
 export const ParallaxScrollView: React.FC<ParallaxScrollViewProps> = ({
-  title,
+  mainHeader,
+  navHeader,
   renderContent,
   headerMaxHeight = 170,
   headerMinHeight = 64,
@@ -18,43 +21,28 @@ export const ParallaxScrollView: React.FC<ParallaxScrollViewProps> = ({
 }) => {
   const scrollY = useRef(new Animated.Value(0)).current;
 
-  const getInputRange = () => [0, headerMaxHeight - headerMinHeight];
-
-  const headerHeight = scrollY.interpolate({
-    inputRange: getInputRange(),
-    outputRange: [headerMaxHeight, headerMinHeight],
-    extrapolate: 'clamp',
-  });
-
   return (
     <View style={styles.container}>
       <Animated.ScrollView
         style={styles.scrollView}
         scrollEventThrottle={scrollEventThrottle}
+        contentContainerStyle={{paddingTop: headerMaxHeight}}
         onScroll={Animated.event(
           [{nativeEvent: {contentOffset: {y: scrollY}}}],
           {
             useNativeDriver: false,
           },
         )}>
-        <View style={{marginTop: headerMaxHeight}}>{renderContent()}</View>
+        {renderContent()}
       </Animated.ScrollView>
 
-      <Animated.View
-        style={[
-          styles.header,
-          {
-            height: headerHeight,
-          },
-        ]}>
-        <SafeAreaView>
-          {typeof title === 'string' ? (
-            <Text style={styles.headerText}>{title}</Text>
-          ) : (
-            title
-          )}
-        </SafeAreaView>
-      </Animated.View>
+      <AnimatedHeader
+        scrollY={scrollY}
+        headerMaxHeight={headerMaxHeight}
+        headerMinHeight={headerMinHeight}
+        mainHeader={mainHeader}
+        navHeader={navHeader}
+      />
     </View>
   );
 };
@@ -65,19 +53,5 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     flex: 1,
-  },
-  header: {
-    backgroundColor: 'black',
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  headerText: {
-    color: 'white',
-    textAlign: 'center',
-    fontSize: 16,
   },
 });

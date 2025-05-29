@@ -1,6 +1,4 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
  *
  * @format
  */
@@ -25,7 +23,8 @@ function App(): React.JSX.Element {
   return (
     <View style={{flex: 1}}>
       <ParallaxScrollView
-        title="Mon Titre Parallax"
+        mainHeader="Mon Titre Parallax"
+        navHeader="Nav header"
         renderContent={renderContent}
       />
     </View>

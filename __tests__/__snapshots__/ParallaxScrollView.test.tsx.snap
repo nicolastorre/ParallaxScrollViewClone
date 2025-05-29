@@ -10,6 +10,11 @@ exports[`ParallaxScrollView matches snapshot 1`] = `
 >
   <RCTScrollView
     collapsable={false}
+    contentContainerStyle={
+      {
+        "paddingTop": 170,
+      }
+    }
     onScroll={[Function]}
     scrollEventThrottle={16}
     style={
@@ -19,23 +24,17 @@ exports[`ParallaxScrollView matches snapshot 1`] = `
     }
   >
     <View>
-      <View
-        style={
-          {
-            "marginTop": 170,
-          }
-        }
-      >
-        <Text>
-          Item 1
-        </Text>
-        <Text>
-          Item 2
-        </Text>
-      </View>
+      <Text>
+        Item 1
+      </Text>
+      <Text>
+        Item 2
+      </Text>
     </View>
   </RCTScrollView>
   <View
+    accessibilityLabel="Parallax Header Container"
+    accessible={true}
     collapsable={false}
     style={
       {
@@ -47,21 +46,68 @@ exports[`ParallaxScrollView matches snapshot 1`] = `
         "position": "absolute",
         "right": 0,
         "top": 0,
+        "zIndex": 1000,
       }
     }
+    testID="parallax-header"
   >
     <RCTSafeAreaView>
-      <Text
+      <View
+        accessibilityLabel="Main Header"
+        accessible={true}
+        collapsable={false}
         style={
           {
-            "color": "white",
-            "fontSize": 16,
-            "textAlign": "center",
+            "alignItems": "center",
+            "justifyContent": "center",
+            "opacity": 1,
           }
         }
+        testID="main-header"
       >
-        Snapshot Title
-      </Text>
+        <Text
+          accessibilityLabel="Main header title: Test main header"
+          accessibilityRole="header"
+          style={
+            {
+              "color": "white",
+              "fontSize": 16,
+              "textAlign": "center",
+            }
+          }
+          testID="header-title"
+        >
+          Test main header
+        </Text>
+      </View>
+      <View
+        accessibilityLabel="Navigation Header"
+        accessible={true}
+        collapsable={false}
+        style={
+          {
+            "alignItems": "center",
+            "justifyContent": "center",
+            "opacity": 0,
+          }
+        }
+        testID="nav-header"
+      >
+        <Text
+          accessibilityLabel="Nav header title: Test nav header"
+          accessibilityRole="header"
+          style={
+            {
+              "color": "white",
+              "fontSize": 16,
+              "textAlign": "center",
+            }
+          }
+          testID="nav-header-title"
+        >
+          Test nav header
+        </Text>
+      </View>
     </RCTSafeAreaView>
   </View>
 </View>
