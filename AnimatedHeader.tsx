@@ -1,12 +1,12 @@
 import React, {useMemo} from 'react';
-import {Animated, SafeAreaView, StyleSheet, Text} from 'react-native';
+import {Animated, SafeAreaView, StyleSheet} from 'react-native';
 
 type AnimatedHeaderProps = {
   scrollY: Animated.Value;
   headerMaxHeight: number;
   headerMinHeight: number;
-  mainHeader?: string | React.ReactElement;
-  navHeader?: string | React.ReactElement;
+  mainHeader: React.ReactNode;
+  navHeader: React.ReactNode;
   fadeDistance?: number;
 };
 
@@ -72,17 +72,7 @@ export const AnimatedHeader: React.FC<AnimatedHeaderProps> = ({
           accessible
           accessibilityLabel="Main Header"
           testID="main-header">
-          {typeof mainHeader === 'string' ? (
-            <Text
-              style={styles.headerText}
-              accessibilityRole="header"
-              accessibilityLabel={`Main header title: ${mainHeader}`}
-              testID="header-title">
-              {mainHeader}
-            </Text>
-          ) : (
-            mainHeader
-          )}
+          {mainHeader}
         </Animated.View>
         <Animated.View
           style={[
@@ -94,17 +84,7 @@ export const AnimatedHeader: React.FC<AnimatedHeaderProps> = ({
           accessible
           accessibilityLabel="Navigation Header"
           testID="nav-header">
-          {typeof navHeader === 'string' ? (
-            <Text
-              style={styles.headerText}
-              accessibilityRole="header"
-              accessibilityLabel={`Nav header title: ${navHeader}`}
-              testID="nav-header-title">
-              {navHeader}
-            </Text>
-          ) : (
-            navHeader
-          )}
+          {navHeader}
         </Animated.View>
       </SafeAreaView>
     </Animated.View>
@@ -121,11 +101,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     zIndex: 1000,
-  },
-  headerText: {
-    color: 'white',
-    textAlign: 'center',
-    fontSize: 16,
   },
   headerContainer: {
     alignItems: 'center',

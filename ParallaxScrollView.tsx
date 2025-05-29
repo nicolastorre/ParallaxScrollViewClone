@@ -23,6 +23,14 @@ export const ParallaxScrollView: React.FC<ParallaxScrollViewProps> = ({
 
   return (
     <View style={styles.container}>
+      <AnimatedHeader
+        scrollY={scrollY}
+        headerMaxHeight={headerMaxHeight}
+        headerMinHeight={headerMinHeight}
+        mainHeader={mainHeader}
+        navHeader={navHeader}
+      />
+
       <Animated.ScrollView
         style={styles.scrollView}
         scrollEventThrottle={scrollEventThrottle}
@@ -35,14 +43,6 @@ export const ParallaxScrollView: React.FC<ParallaxScrollViewProps> = ({
         )}>
         {renderContent()}
       </Animated.ScrollView>
-
-      <AnimatedHeader
-        scrollY={scrollY}
-        headerMaxHeight={headerMaxHeight}
-        headerMinHeight={headerMinHeight}
-        mainHeader={mainHeader}
-        navHeader={navHeader}
-      />
     </View>
   );
 };

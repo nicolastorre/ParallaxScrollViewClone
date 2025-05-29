@@ -23,8 +23,24 @@ function App(): React.JSX.Element {
   return (
     <View style={{flex: 1}}>
       <ParallaxScrollView
-        mainHeader="Mon Titre Parallax"
-        navHeader="Nav header"
+        mainHeader={
+          <Text
+            style={styles.headerText}
+            accessibilityRole="header"
+            accessibilityLabel={'Main header'}
+            testID="header-title">
+            {'Main header'}
+          </Text>
+        }
+        navHeader={
+          <Text
+            style={styles.headerText}
+            accessibilityRole="header"
+            accessibilityLabel={'Nav header'}
+            testID="nav-header-title">
+            {'Nav header'}
+          </Text>
+        }
         renderContent={renderContent}
       />
     </View>
@@ -42,6 +58,11 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   itemText: {
+    fontSize: 16,
+  },
+  headerText: {
+    color: 'white',
+    textAlign: 'center',
     fontSize: 16,
   },
 });

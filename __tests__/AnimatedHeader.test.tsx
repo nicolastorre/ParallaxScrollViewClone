@@ -14,16 +14,30 @@ describe('AnimatedHeader', () => {
         scrollY={scrollY}
         headerMaxHeight={headerMaxHeight}
         headerMinHeight={headerMinHeight}
-        mainHeader="Main Title"
-        navHeader="Nav Title"
+        mainHeader={
+          <Text
+            accessibilityRole="header"
+            accessibilityLabel={'Main header'}
+            testID="header-title">
+            {'Main header'}
+          </Text>
+        }
+        navHeader={
+          <Text
+            accessibilityRole="header"
+            accessibilityLabel={'Nav header'}
+            testID="nav-header-title">
+            {'Nav header'}
+          </Text>
+        }
       />,
     );
 
     expect(getByTestId('main-header')).toBeTruthy();
-    expect(getByTestId('header-title').props.children).toBe('Main Title');
+    expect(getByTestId('header-title').props.children).toBe('Main header');
 
     expect(getByTestId('nav-header')).toBeTruthy();
-    expect(getByTestId('nav-header-title').props.children).toBe('Nav Title');
+    expect(getByTestId('nav-header-title').props.children).toBe('Nav header');
   });
 
   it('renders mainHeader and navHeader as React elements', () => {
@@ -32,15 +46,29 @@ describe('AnimatedHeader', () => {
         scrollY={scrollY}
         headerMaxHeight={headerMaxHeight}
         headerMinHeight={headerMinHeight}
-        mainHeader={<Text>Custom Main</Text>}
-        navHeader={<Text>Custom Nav</Text>}
+        mainHeader={
+          <Text
+            accessibilityRole="header"
+            accessibilityLabel={'Main header'}
+            testID="header-title">
+            {'Main header'}
+          </Text>
+        }
+        navHeader={
+          <Text
+            accessibilityRole="header"
+            accessibilityLabel={'Nav header'}
+            testID="nav-header-title">
+            {'Nav header'}
+          </Text>
+        }
       />,
     );
 
     expect(getByTestId('main-header')).toBeTruthy();
-    expect(getByText('Custom Main')).toBeTruthy();
+    expect(getByText('Main header')).toBeTruthy();
 
     expect(getByTestId('nav-header')).toBeTruthy();
-    expect(getByText('Custom Nav')).toBeTruthy();
+    expect(getByText('Nav header')).toBeTruthy();
   });
 });

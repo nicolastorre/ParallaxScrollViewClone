@@ -66,18 +66,11 @@ exports[`ParallaxScrollView matches snapshot 1`] = `
         testID="main-header"
       >
         <Text
-          accessibilityLabel="Main header title: Test main header"
+          accessibilityLabel="Main header"
           accessibilityRole="header"
-          style={
-            {
-              "color": "white",
-              "fontSize": 16,
-              "textAlign": "center",
-            }
-          }
           testID="header-title"
         >
-          Test main header
+          Main header
         </Text>
       </View>
       <View
@@ -94,18 +87,11 @@ exports[`ParallaxScrollView matches snapshot 1`] = `
         testID="nav-header"
       >
         <Text
-          accessibilityLabel="Nav header title: Test nav header"
+          accessibilityLabel="Nav header"
           accessibilityRole="header"
-          style={
-            {
-              "color": "white",
-              "fontSize": 16,
-              "textAlign": "center",
-            }
-          }
           testID="nav-header-title"
         >
-          Test nav header
+          Nav header
         </Text>
       </View>
     </RCTSafeAreaView>

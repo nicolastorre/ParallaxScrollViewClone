@@ -3,34 +3,59 @@ import {render} from '@testing-library/react-native';
 import {ParallaxScrollView} from '../ParallaxScrollView';
 import {Text} from 'react-native';
 
-const mainHeader = 'Test main header';
-const navHeader = 'Test nav header';
-const contentText = 'Test Content Item';
-
 describe('ParallaxScrollView', () => {
   it('renders the title and content correctly', () => {
     const {getByText} = render(
       <ParallaxScrollView
-        mainHeader={mainHeader}
-        navHeader={navHeader}
+        mainHeader={
+          <Text
+            accessibilityRole="header"
+            accessibilityLabel={'Main header'}
+            testID="header-title">
+            {'Main header'}
+          </Text>
+        }
+        navHeader={
+          <Text
+            accessibilityRole="header"
+            accessibilityLabel={'Nav header'}
+            testID="nav-header-title">
+            {'Nav header'}
+          </Text>
+        }
         renderContent={() => (
           <>
-            <Text>{contentText}</Text>
+            <Text>Item 1</Text>
+            <Text>Item 2</Text>
           </>
         )}
       />,
     );
 
-    expect(getByText(mainHeader)).toBeTruthy();
+    expect(getByText('Main header')).toBeTruthy();
 
-    expect(getByText(contentText)).toBeTruthy();
+    expect(getByText('Nav header')).toBeTruthy();
   });
 
   it('matches snapshot', () => {
     const tree = render(
       <ParallaxScrollView
-        mainHeader={mainHeader}
-        navHeader={navHeader}
+        mainHeader={
+          <Text
+            accessibilityRole="header"
+            accessibilityLabel={'Main header'}
+            testID="header-title">
+            {'Main header'}
+          </Text>
+        }
+        navHeader={
+          <Text
+            accessibilityRole="header"
+            accessibilityLabel={'Nav header'}
+            testID="nav-header-title">
+            {'Nav header'}
+          </Text>
+        }
         renderContent={() => (
           <>
             <Text>Item 1</Text>
