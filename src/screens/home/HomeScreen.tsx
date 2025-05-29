@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StatusBar, StyleSheet, Text, View} from 'react-native';
 import {ParallaxScrollView} from '../../components/parallaxScrollView/ParallaxScrollView';
 import {common} from '../../styles/common';
 import {colors} from '../../styles/colors';
@@ -18,6 +18,7 @@ const renderScrollContent = (): React.ReactNode => {
 export const HomeScreen: React.FC = () => {
   return (
     <View style={[common.container, styles.homeContainer]}>
+      <StatusBar backgroundColor={colors.black} />
       <ParallaxScrollView
         mainHeader={
           <Text
