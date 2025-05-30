@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ParallaxScrollView matches snapshot 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityLabel="Parallax Header Container"
+    accessible={true}
+    collapsable={false}
+    style={
+      {
+        "alignItems": "center",
+        "backgroundColor": "black",
+        "height": 80,
+        "justifyContent": "center",
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "width": "100%",
+        "zIndex": 1000,
+      }
+    }
+    testID="parallax-header"
+  >
+    <View
+      accessibilityLabel="Main Header"
+      accessible={true}
+      collapsable={false}
+      style={
+        {
+          "alignItems": "center",
+          "justifyContent": "center",
+          "left": 0,
+          "opacity": 1,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+          "width": "100%",
+        }
+      }
+      testID="main-header"
+    >
+      <Text
+        accessibilityLabel="Main header"
+        accessibilityRole="header"
+        testID="header-title"
+      >
+        Main header
+      </Text>
+    </View>
+    <View
+      accessibilityLabel="Navigation Header"
+      accessible={true}
+      collapsable={false}
+      style={
+        {
+          "alignItems": "center",
+          "justifyContent": "center",
+          "left": 0,
+          "opacity": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+          "width": "100%",
+        }
+      }
+      testID="nav-header"
+    >
+      <Text
+        accessibilityLabel="Nav header"
+        accessibilityRole="header"
+        testID="nav-header-title"
+      >
+        Nav header
+      </Text>
+    </View>
+  </View>
+  <RCTScrollView
+    collapsable={false}
+    contentContainerStyle={
+      {
+        "paddingTop": 80,
+      }
+    }
+    onScroll={[Function]}
+    scrollEventThrottle={16}
+    style={
+      {
+        "flex": 1,
+      }
+    }
+  >
+    <View>
+      <Text>
+        Item 1
+      </Text>
+      <Text>
+        Item 2
+      </Text>
+    </View>
+  </RCTScrollView>
+</View>
+`;

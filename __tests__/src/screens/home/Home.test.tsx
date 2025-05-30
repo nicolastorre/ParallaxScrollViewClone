@@ -2,17 +2,20 @@ import React from 'react';
 import {render} from '@testing-library/react-native';
 import {HomeScreen} from '../../../../src/screens/home/HomeScreen';
 
-jest.mock('../../../../parallaxScrollView/ParallaxScrollView', () => {
-  return {
-    ParallaxScrollView: ({mainHeader, navHeader, renderContent}: any) => (
-      <>
-        {mainHeader}
-        {navHeader}
-        {renderContent()}
-      </>
-    ),
-  };
-});
+jest.mock(
+  '../../../../parallaxScrollViewModule/src/parallaxScrollView/ParallaxScrollView',
+  () => {
+    return {
+      ParallaxScrollView: ({mainHeader, navHeader, renderContent}: any) => (
+        <>
+          {mainHeader}
+          {navHeader}
+          {renderContent()}
+        </>
+      ),
+    };
+  },
+);
 
 describe('HomeScreen', () => {
   it('renders main and nav headers correctly', () => {
