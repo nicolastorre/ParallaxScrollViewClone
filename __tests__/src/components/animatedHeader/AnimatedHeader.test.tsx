@@ -1,7 +1,7 @@
 import React from 'react';
 import {Animated, Text} from 'react-native';
 import {render} from '@testing-library/react-native';
-import {AnimatedHeader} from '../../../../src/components/animatedHeader/AnimatedHeader';
+import {AnimatedHeader} from '../../../../parallaxScrollViewModule/src/animatedHeader/AnimatedHeader';
 
 describe('AnimatedHeader', () => {
   const scrollY = new Animated.Value(0);

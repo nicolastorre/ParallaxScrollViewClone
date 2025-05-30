@@ -3,7 +3,7 @@ import {render} from '@testing-library/react-native';
 import {HomeScreen} from '../../../../src/screens/home/HomeScreen';
 
 jest.mock(
-  '../../../../src/components/parallaxScrollView/ParallaxScrollView',
+  '../../../../parallaxScrollViewModule/src/parallaxScrollView/ParallaxScrollView',
   () => {
     return {
       ParallaxScrollView: ({mainHeader, navHeader, renderContent}: any) => (

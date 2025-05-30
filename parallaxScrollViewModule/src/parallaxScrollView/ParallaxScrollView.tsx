@@ -1,7 +1,7 @@
 import React, {useRef} from 'react';
 import {Animated, StyleSheet, View} from 'react-native';
 import {AnimatedHeader} from '../animatedHeader/AnimatedHeader';
-import {common} from '../../styles/common';
+import {common} from '../../../src/styles/common';
 
 type ParallaxScrollViewProps = {
   mainHeader: React.ReactNode;

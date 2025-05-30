@@ -1,5 +1,5 @@
 import {StatusBar, StyleSheet, Text, View} from 'react-native';
-import {ParallaxScrollView} from '../../components/parallaxScrollView/ParallaxScrollView';
+import {ParallaxScrollView} from '../../../parallaxScrollViewModule/src/parallaxScrollView/ParallaxScrollView';
 import {common} from '../../styles/common';
 import {colors} from '../../styles/colors';
 import {HomeHeader} from '../../components/homeHeader/HomeHeader';
