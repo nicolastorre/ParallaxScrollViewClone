@@ -30,9 +30,9 @@ describe('HomeScreen', () => {
   });
 
   it('renders scroll content with 50 elements', () => {
-    const {getAllByText} = render(<HomeScreen />);
+    const {getAllByTestId} = render(<HomeScreen />);
 
-    const items = getAllByText(/^Élément #[0-9]+$/);
+    const items = getAllByTestId(/^element-#[0-9]+$/);
 
     expect(items.length).toBe(50);
   });

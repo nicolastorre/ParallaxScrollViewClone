@@ -1,4 +1,4 @@
-import {StatusBar, StyleSheet, Text, View} from 'react-native';
+import {StatusBar, StyleSheet, View} from 'react-native';
 import {ParallaxScrollView} from '../../../parallaxScrollViewModule/src/parallaxScrollView/ParallaxScrollView';
 import {common} from '../../styles/common';
 import {colors} from '../../styles/colors';
@@ -11,9 +11,7 @@ export const HomeScreen: React.FC = () => {
     return (
       <View style={styles.content}>
         {Array.from({length: 50}).map((_, index) => (
-          <View key={index} style={styles.item}>
-            <Text style={styles.itemText}>Élément #{index + 1}</Text>
-          </View>
+          <View key={index} style={styles.item} testID={`element-#${index}`} />
         ))}
       </View>
     );
@@ -45,17 +43,9 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   item: {
-    backgroundColor: colors.white,
+    backgroundColor: colors.black,
     marginBottom: 10,
     padding: 15,
     borderRadius: 8,
-  },
-  itemText: {
-    fontSize: 16,
-  },
-  headerText: {
-    color: colors.white,
-    textAlign: 'center',
-    fontSize: 16,
   },
 });
