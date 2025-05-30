@@ -34,7 +34,11 @@ export const HomeScreen: React.FC = () => {
           </Text>
         }
         renderContent={renderScrollContent}
+        headerMaxHeight={80}
+        headerMinHeight={40}
+        scrollEventThrottle={20}
         headerBackgroundColor={colors.black}
+        fadeDistance={5}
       />
     </View>
   );

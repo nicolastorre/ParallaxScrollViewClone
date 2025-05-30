@@ -16,7 +16,7 @@ exports[`ParallaxScrollView matches snapshot 1`] = `
       {
         "alignItems": "center",
         "backgroundColor": "black",
-        "height": 110,
+        "height": 80,
         "justifyContent": "center",
         "left": 0,
         "position": "absolute",
@@ -85,7 +85,7 @@ exports[`ParallaxScrollView matches snapshot 1`] = `
     collapsable={false}
     contentContainerStyle={
       {
-        "paddingTop": 110,
+        "paddingTop": 80,
       }
     }
     onScroll={[Function]}

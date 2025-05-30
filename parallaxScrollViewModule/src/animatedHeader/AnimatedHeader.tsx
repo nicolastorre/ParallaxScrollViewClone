@@ -17,7 +17,7 @@ export const AnimatedHeader: React.FC<AnimatedHeaderProps> = ({
   headerMinHeight,
   mainHeader,
   navHeader,
-  fadeDistance = 20,
+  fadeDistance = 0,
   headerBackgroundColor = 'black',
 }) => {
   const scrollRange = useMemo(
