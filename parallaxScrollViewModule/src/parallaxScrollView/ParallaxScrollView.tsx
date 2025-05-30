@@ -14,6 +14,8 @@ type ParallaxScrollViewProps = {
   fadeDistance?: number;
 };
 
+const SEPRATOR_MARGIN_TOP = 10;
+
 export const ParallaxScrollView: React.FC<ParallaxScrollViewProps> = ({
   mainHeader,
   navHeader,
@@ -36,12 +38,15 @@ export const ParallaxScrollView: React.FC<ParallaxScrollViewProps> = ({
         navHeader={navHeader}
         headerBackgroundColor={headerBackgroundColor}
         fadeDistance={fadeDistance}
+        separatorMarginTop={SEPRATOR_MARGIN_TOP}
       />
 
       <Animated.ScrollView
         style={styles.scrollView}
         scrollEventThrottle={scrollEventThrottle}
-        contentContainerStyle={{paddingTop: headerMaxHeight}}
+        contentContainerStyle={{
+          paddingTop: headerMaxHeight + SEPRATOR_MARGIN_TOP,
+        }}
         onScroll={Animated.event(
           [{nativeEvent: {contentOffset: {y: scrollY}}}],
           {

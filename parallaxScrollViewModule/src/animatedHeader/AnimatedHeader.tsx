@@ -9,6 +9,7 @@ type AnimatedHeaderProps = {
   navHeader: React.ReactNode;
   fadeDistance?: number;
   headerBackgroundColor?: string;
+  separatorMarginTop?: number;
 };
 
 export const AnimatedHeader: React.FC<AnimatedHeaderProps> = ({
@@ -19,6 +20,7 @@ export const AnimatedHeader: React.FC<AnimatedHeaderProps> = ({
   navHeader,
   fadeDistance = 0,
   headerBackgroundColor = 'black',
+  separatorMarginTop,
 }) => {
   const scrollRange = useMemo(
     () => headerMaxHeight - headerMinHeight,
@@ -40,11 +42,11 @@ export const AnimatedHeader: React.FC<AnimatedHeaderProps> = ({
   const opacityMainHeader = useMemo(
     () =>
       scrollY.interpolate({
-        inputRange: [0, scrollRange - fadeDistance],
+        inputRange: [0, scrollRange],
         outputRange: [1, 0],
         extrapolate: 'clamp',
       }),
-    [scrollY, scrollRange, fadeDistance],
+    [scrollY, scrollRange],
   );
 
   const opacityNavHeader = useMemo(
@@ -57,12 +59,19 @@ export const AnimatedHeader: React.FC<AnimatedHeaderProps> = ({
     [scrollY, scrollRange, fadeDistance],
   );
 
+  const translateNavBorder = useMemo(
+    () =>
+      scrollY.interpolate({
+        inputRange: [0, headerMaxHeight],
+        outputRange: [headerMaxHeight, 0],
+        extrapolate: 'clamp',
+      }),
+    [scrollY, headerMaxHeight],
+  );
+
   return (
     <Animated.View
-      style={[
-        styles.header,
-        {height: headerHeight, backgroundColor: headerBackgroundColor},
-      ]}
+      style={[styles.header, {height: headerHeight}]}
       accessible
       accessibilityLabel="Parallax Header Container"
       testID="parallax-header">
@@ -83,12 +92,27 @@ export const AnimatedHeader: React.FC<AnimatedHeaderProps> = ({
           styles.headerContainer,
           {
             opacity: opacityNavHeader,
+            backgroundColor: headerBackgroundColor,
           },
         ]}
         accessible
         accessibilityLabel="Navigation Header"
         testID="nav-header">
         {navHeader}
+
+        <Animated.View
+          style={[
+            styles.separator,
+            {
+              marginTop: separatorMarginTop,
+              transform: [
+                {
+                  translateY: translateNavBorder,
+                },
+              ],
+            },
+          ]}
+        />
       </Animated.View>
     </Animated.View>
   );
@@ -113,5 +137,10 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  separator: {
+    backgroundColor: 'white',
+    height: 1,
+    width: '100%',
   },
 });
