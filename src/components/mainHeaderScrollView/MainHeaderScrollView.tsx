@@ -1,20 +1,21 @@
 import {StyleSheet, Text, View} from 'react-native';
 import {colors} from '../../styles/colors';
+import {common} from '../../styles/common';
 
 export const MainHeaderScrollView: React.FC = () => {
   return (
     <View style={styles.main} testID="main-header">
       <View style={styles.firstCol}>
         <View style={styles.line}>
-          <Text style={[styles.text]}>Patrimoine brut</Text>
+          <Text style={[common.text]}>Patrimoine brut</Text>
         </View>
         <View style={styles.line}>
-          <Text style={[styles.text, styles.amount]}>226 €</Text>
+          <Text style={[common.text, styles.amount]}>226 €</Text>
         </View>
         <View style={[styles.line, styles.thirdLine]}>
-          <Text style={[styles.text, styles.tagText]}>1 jour</Text>
-          <Text style={[styles.text, styles.tagText]}>0 €</Text>
-          <Text style={[styles.text, styles.tagText]}>0,00 %</Text>
+          <Text style={[common.text, common.smallText]}>1 jour</Text>
+          <Text style={[common.text, common.smallText]}>0 €</Text>
+          <Text style={[common.text, common.smallText]}>0,00 %</Text>
         </View>
       </View>
       <View style={styles.secondCol}>
@@ -44,12 +45,8 @@ const styles = StyleSheet.create({
   },
   thirdLine: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
-  },
-  text: {
-    color: colors.white,
-    textAlign: 'center',
-    fontSize: 20,
+    alignItems: 'center',
+    gap: 20,
   },
   amount: {
     fontSize: 30,
@@ -57,8 +54,5 @@ const styles = StyleSheet.create({
   graphic: {
     borderWidth: 1,
     borderColor: colors.white,
-  },
-  tagText: {
-    fontSize: 14,
   },
 });

@@ -4,6 +4,7 @@ import {common} from '../../styles/common';
 import {colors} from '../../styles/colors';
 import {HomeHeader} from '../../components/homeHeader/HomeHeader';
 import {MainHeaderScrollView} from '../../components/mainHeaderScrollView/MainHeaderScrollView';
+import {NavHeaderScrollView} from '../../navHeaderScrollView/NavHeaderScrollView';
 
 export const HomeScreen: React.FC = () => {
   const renderScrollContent = (): React.ReactNode => {
@@ -24,15 +25,7 @@ export const HomeScreen: React.FC = () => {
       <HomeHeader />
       <ParallaxScrollView
         mainHeader={<MainHeaderScrollView />}
-        navHeader={
-          <Text
-            style={styles.headerText}
-            accessibilityRole="header"
-            accessibilityLabel={'Nav header'}
-            testID="nav-header">
-            {'Nav header'}
-          </Text>
-        }
+        navHeader={<NavHeaderScrollView />}
         renderContent={renderScrollContent}
         headerMaxHeight={80}
         headerMinHeight={40}
