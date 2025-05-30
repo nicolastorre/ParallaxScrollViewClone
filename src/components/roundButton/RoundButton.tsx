@@ -12,6 +12,7 @@ export const RoundButton: React.FC<RoundButtonProps> = ({
 }) => {
   return (
     <TouchableOpacity
+      testID="round-button"
       onPress={() => Alert.alert('Under construction')}
       style={[styles.roundBtn, {backgroundColor}]}>
       <View style={styles.contentBtn}>{icon}</View>

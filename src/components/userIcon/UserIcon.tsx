@@ -5,8 +5,8 @@ import {colors} from '../../styles/colors';
 const UserIcon = () => {
   return (
     <View style={styles.container}>
-      <View style={styles.head} />
-      <View style={styles.body} />
+      <View style={styles.head} testID="user-icon-head" />
+      <View style={styles.body} testID="user-icon-body" />
     </View>
   );
 };
