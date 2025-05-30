@@ -1,5 +1,5 @@
 import {StatusBar, StyleSheet, Text, View} from 'react-native';
-import {ParallaxScrollView} from '../../../parallaxScrollViewModule/src/parallaxScrollView/ParallaxScrollView';
+import {ParallaxScrollView} from '../../../parallaxScrollView/ParallaxScrollView';
 import {common} from '../../styles/common';
 import {colors} from '../../styles/colors';
 import {HomeHeader} from '../../components/homeHeader/HomeHeader';
@@ -27,7 +27,7 @@ export const HomeScreen: React.FC = () => {
         mainHeader={<MainHeaderScrollView />}
         navHeader={<NavHeaderScrollView />}
         renderContent={renderScrollContent}
-        headerMaxHeight={80}
+        headerMaxHeight={90}
         headerMinHeight={40}
         scrollEventThrottle={20}
         headerBackgroundColor={colors.black}
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.black,
   },
   content: {
-    padding: 20,
+    paddingHorizontal: 20,
   },
   item: {
     backgroundColor: colors.white,

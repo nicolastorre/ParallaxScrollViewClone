@@ -1,40 +1,33 @@
-import React, {useMemo} from 'react';
-import {Animated, StyleSheet} from 'react-native';
+import React, {useMemo, useRef} from 'react';
+import {Animated, StyleSheet, View} from 'react-native';
+import {common} from '../src/styles/common';
 
-type AnimatedHeaderProps = {
-  scrollY: Animated.Value;
-  headerMaxHeight: number;
-  headerMinHeight: number;
+type ParallaxScrollViewProps = {
   mainHeader: React.ReactNode;
   navHeader: React.ReactNode;
-  fadeDistance?: number;
+  renderContent: () => React.ReactNode;
+  headerMaxHeight?: number;
+  headerMinHeight?: number;
+  scrollEventThrottle?: number;
   headerBackgroundColor?: string;
+  fadeDistance?: number;
 };
 
-export const AnimatedHeader: React.FC<AnimatedHeaderProps> = ({
-  scrollY,
-  headerMaxHeight,
-  headerMinHeight,
+export const ParallaxScrollView: React.FC<ParallaxScrollViewProps> = ({
   mainHeader,
   navHeader,
-  fadeDistance = 0,
+  renderContent,
+  headerMaxHeight = 90,
+  headerMinHeight = 40,
+  scrollEventThrottle = 16,
   headerBackgroundColor = 'black',
+  fadeDistance = 0,
 }) => {
+  const scrollY = useRef(new Animated.Value(0)).current;
+
   const scrollRange = useMemo(
     () => headerMaxHeight - headerMinHeight,
     [headerMaxHeight, headerMinHeight],
-  );
-
-  const inputRange = useMemo(() => [0, scrollRange], [scrollRange]);
-
-  const headerHeight = useMemo(
-    () =>
-      scrollY.interpolate({
-        inputRange,
-        outputRange: [headerMaxHeight, headerMinHeight],
-        extrapolate: 'clamp',
-      }),
-    [scrollY, inputRange, headerMaxHeight, headerMinHeight],
   );
 
   const opacityMainHeader = useMemo(
@@ -57,19 +50,25 @@ export const AnimatedHeader: React.FC<AnimatedHeaderProps> = ({
     [scrollY, scrollRange, fadeDistance],
   );
 
+  const navHeaderStyle = useMemo(
+    () => [
+      styles.headerContainer,
+      {
+        backgroundColor: headerBackgroundColor,
+        opacity: opacityNavHeader,
+        zIndex: 1000,
+      },
+    ],
+    [headerBackgroundColor, opacityNavHeader],
+  );
+
   return (
-    <Animated.View
-      style={[
-        styles.header,
-        {height: headerHeight, backgroundColor: headerBackgroundColor},
-      ]}
-      accessible
-      accessibilityLabel="Parallax Header Container"
-      testID="parallax-header">
+    <View style={common.container}>
       <Animated.View
         style={[
           styles.headerContainer,
           {
+            backgroundColor: headerBackgroundColor,
             opacity: opacityMainHeader,
           },
         ]}
@@ -78,32 +77,34 @@ export const AnimatedHeader: React.FC<AnimatedHeaderProps> = ({
         testID="main-header">
         {mainHeader}
       </Animated.View>
+
       <Animated.View
-        style={[
-          styles.headerContainer,
-          {
-            opacity: opacityNavHeader,
-          },
-        ]}
+        style={navHeaderStyle}
         accessible
         accessibilityLabel="Navigation Header"
         testID="nav-header">
         {navHeader}
       </Animated.View>
-    </Animated.View>
+
+      <Animated.ScrollView
+        style={styles.scrollView}
+        scrollEventThrottle={scrollEventThrottle}
+        contentContainerStyle={{paddingTop: headerMaxHeight}}
+        onScroll={Animated.event(
+          [{nativeEvent: {contentOffset: {y: scrollY}}}],
+          {
+            useNativeDriver: false,
+          },
+        )}>
+        {renderContent()}
+      </Animated.ScrollView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  header: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    width: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-    zIndex: 1000,
+  scrollView: {
+    flex: 1,
   },
   headerContainer: {
     position: 'absolute',
