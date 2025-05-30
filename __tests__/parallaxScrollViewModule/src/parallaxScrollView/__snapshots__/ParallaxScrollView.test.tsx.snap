@@ -15,7 +15,6 @@ exports[`ParallaxScrollView matches snapshot 1`] = `
     style={
       {
         "alignItems": "center",
-        "backgroundColor": "black",
         "height": 80,
         "justifyContent": "center",
         "left": 0,
@@ -61,6 +60,7 @@ exports[`ParallaxScrollView matches snapshot 1`] = `
       style={
         {
           "alignItems": "center",
+          "backgroundColor": "black",
           "justifyContent": "center",
           "left": 0,
           "opacity": 0,
@@ -79,13 +79,29 @@ exports[`ParallaxScrollView matches snapshot 1`] = `
       >
         Nav header
       </Text>
+      <View
+        collapsable={false}
+        style={
+          {
+            "backgroundColor": "white",
+            "height": 1,
+            "marginTop": 10,
+            "transform": [
+              {
+                "translateY": 80,
+              },
+            ],
+            "width": "100%",
+          }
+        }
+      />
     </View>
   </View>
   <RCTScrollView
     collapsable={false}
     contentContainerStyle={
       {
-        "paddingTop": 80,
+        "paddingTop": 90,
       }
     }
     onScroll={[Function]}

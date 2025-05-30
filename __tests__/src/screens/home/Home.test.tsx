@@ -34,6 +34,6 @@ describe('HomeScreen', () => {
 
     const items = getAllByTestId(/^element-#[0-9]+$/);
 
-    expect(items.length).toBe(50);
+    expect(items.length).toBe(51);
   });
 });
