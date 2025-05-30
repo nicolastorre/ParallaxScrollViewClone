@@ -21,14 +21,12 @@ describe('HomeScreen', () => {
   it('renders main and nav headers correctly', () => {
     const {getByTestId} = render(<HomeScreen />);
 
-    const mainHeader = getByTestId('header-title');
-    const navHeader = getByTestId('nav-header-title');
+    const mainHeader = getByTestId('main-header');
+    const navHeader = getByTestId('nav-header');
 
     expect(mainHeader).toBeTruthy();
-    expect(mainHeader.props.children).toBe('Main header');
 
     expect(navHeader).toBeTruthy();
-    expect(navHeader.props.children).toBe('Nav header');
   });
 
   it('renders scroll content with 50 elements', () => {

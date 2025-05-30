@@ -3,6 +3,7 @@ import {ParallaxScrollView} from '../../../parallaxScrollViewModule/src/parallax
 import {common} from '../../styles/common';
 import {colors} from '../../styles/colors';
 import {HomeHeader} from '../../components/homeHeader/HomeHeader';
+import {MainHeaderScrollView} from '../../components/mainHeaderScrollView/MainHeaderScrollView';
 
 export const HomeScreen: React.FC = () => {
   const renderScrollContent = (): React.ReactNode => {
@@ -22,21 +23,13 @@ export const HomeScreen: React.FC = () => {
       <StatusBar backgroundColor={colors.black} />
       <HomeHeader />
       <ParallaxScrollView
-        mainHeader={
-          <Text
-            style={styles.headerText}
-            accessibilityRole="header"
-            accessibilityLabel={'Main header'}
-            testID="header-title">
-            {'Main header'}
-          </Text>
-        }
+        mainHeader={<MainHeaderScrollView />}
         navHeader={
           <Text
             style={styles.headerText}
             accessibilityRole="header"
             accessibilityLabel={'Nav header'}
-            testID="nav-header-title">
+            testID="nav-header">
             {'Nav header'}
           </Text>
         }

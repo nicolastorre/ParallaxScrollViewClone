@@ -17,7 +17,7 @@ export const ParallaxScrollView: React.FC<ParallaxScrollViewProps> = ({
   mainHeader,
   navHeader,
   renderContent,
-  headerMaxHeight = 170,
+  headerMaxHeight = 110,
   headerMinHeight = 64,
   scrollEventThrottle = 16,
   headerBackgroundColor = 'black',

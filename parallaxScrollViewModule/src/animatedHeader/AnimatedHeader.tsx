@@ -1,5 +1,5 @@
 import React, {useMemo} from 'react';
-import {Animated, SafeAreaView, StyleSheet} from 'react-native';
+import {Animated, StyleSheet} from 'react-native';
 
 type AnimatedHeaderProps = {
   scrollY: Animated.Value;
@@ -17,7 +17,7 @@ export const AnimatedHeader: React.FC<AnimatedHeaderProps> = ({
   headerMinHeight,
   mainHeader,
   navHeader,
-  fadeDistance = 40,
+  fadeDistance = 20,
   headerBackgroundColor = 'black',
 }) => {
   const scrollRange = useMemo(
@@ -66,32 +66,30 @@ export const AnimatedHeader: React.FC<AnimatedHeaderProps> = ({
       accessible
       accessibilityLabel="Parallax Header Container"
       testID="parallax-header">
-      <SafeAreaView>
-        <Animated.View
-          style={[
-            styles.headerContainer,
-            {
-              opacity: opacityMainHeader,
-            },
-          ]}
-          accessible
-          accessibilityLabel="Main Header"
-          testID="main-header">
-          {mainHeader}
-        </Animated.View>
-        <Animated.View
-          style={[
-            styles.headerContainer,
-            {
-              opacity: opacityNavHeader,
-            },
-          ]}
-          accessible
-          accessibilityLabel="Navigation Header"
-          testID="nav-header">
-          {navHeader}
-        </Animated.View>
-      </SafeAreaView>
+      <Animated.View
+        style={[
+          styles.headerContainer,
+          {
+            opacity: opacityMainHeader,
+          },
+        ]}
+        accessible
+        accessibilityLabel="Main Header"
+        testID="main-header">
+        {mainHeader}
+      </Animated.View>
+      <Animated.View
+        style={[
+          styles.headerContainer,
+          {
+            opacity: opacityNavHeader,
+          },
+        ]}
+        accessible
+        accessibilityLabel="Navigation Header"
+        testID="nav-header">
+        {navHeader}
+      </Animated.View>
     </Animated.View>
   );
 };
@@ -102,12 +100,18 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     right: 0,
+    width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
     zIndex: 1000,
   },
   headerContainer: {
-    alignItems: 'center',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    width: '100%',
     justifyContent: 'center',
+    alignItems: 'center',
   },
 });

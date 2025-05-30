@@ -16,67 +16,76 @@ exports[`ParallaxScrollView matches snapshot 1`] = `
       {
         "alignItems": "center",
         "backgroundColor": "black",
-        "height": 170,
+        "height": 110,
         "justifyContent": "center",
         "left": 0,
         "position": "absolute",
         "right": 0,
         "top": 0,
+        "width": "100%",
         "zIndex": 1000,
       }
     }
     testID="parallax-header"
   >
-    <RCTSafeAreaView>
-      <View
-        accessibilityLabel="Main Header"
-        accessible={true}
-        collapsable={false}
-        style={
-          {
-            "alignItems": "center",
-            "justifyContent": "center",
-            "opacity": 1,
-          }
+    <View
+      accessibilityLabel="Main Header"
+      accessible={true}
+      collapsable={false}
+      style={
+        {
+          "alignItems": "center",
+          "justifyContent": "center",
+          "left": 0,
+          "opacity": 1,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+          "width": "100%",
         }
-        testID="main-header"
+      }
+      testID="main-header"
+    >
+      <Text
+        accessibilityLabel="Main header"
+        accessibilityRole="header"
+        testID="header-title"
       >
-        <Text
-          accessibilityLabel="Main header"
-          accessibilityRole="header"
-          testID="header-title"
-        >
-          Main header
-        </Text>
-      </View>
-      <View
-        accessibilityLabel="Navigation Header"
-        accessible={true}
-        collapsable={false}
-        style={
-          {
-            "alignItems": "center",
-            "justifyContent": "center",
-            "opacity": 0,
-          }
+        Main header
+      </Text>
+    </View>
+    <View
+      accessibilityLabel="Navigation Header"
+      accessible={true}
+      collapsable={false}
+      style={
+        {
+          "alignItems": "center",
+          "justifyContent": "center",
+          "left": 0,
+          "opacity": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+          "width": "100%",
         }
-        testID="nav-header"
+      }
+      testID="nav-header"
+    >
+      <Text
+        accessibilityLabel="Nav header"
+        accessibilityRole="header"
+        testID="nav-header-title"
       >
-        <Text
-          accessibilityLabel="Nav header"
-          accessibilityRole="header"
-          testID="nav-header-title"
-        >
-          Nav header
-        </Text>
-      </View>
-    </RCTSafeAreaView>
+        Nav header
+      </Text>
+    </View>
   </View>
   <RCTScrollView
     collapsable={false}
     contentContainerStyle={
       {
-        "paddingTop": 170,
+        "paddingTop": 110,
       }
     }
     onScroll={[Function]}
